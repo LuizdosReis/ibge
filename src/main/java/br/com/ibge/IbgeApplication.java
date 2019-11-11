@@ -2,12 +2,14 @@ package br.com.ibge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 public class IbgeApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(IbgeApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(IbgeApplication.class, args);
+    }
 
 }
