@@ -1,0 +1,26 @@
+version: "2"
+networks:
+  ibge-net:
+    driver: default
+
+services:
+  ibge-redis:
+    image: redis:5.0.3
+    container_name: ibge-redis
+    ports:
+      - 6379:6379
+  ibge-maven:
+    image: maven:3.3-jdk-8
+    container_name: ibge-maven
+    user: "1000"
+    ports:
+      - 8080:8080
+      - 5005:5005
+    environment:
+      REDIS_HOST: ibge-redis
+      MAVEN_CONFIG: /var/maven/.m2
+    volumes:
+      - $HOME/.m2:/var/maven/.m2
+      - $PWD:/usr/src/mymaven
+    working_dir: /usr/src/mymaven
+    command: mvn spring-boot:run -Duser.home=/var/maven -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"

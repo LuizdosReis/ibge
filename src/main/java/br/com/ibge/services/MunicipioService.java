@@ -6,4 +6,6 @@ import java.util.Set;
 
 public interface MunicipioService {
     Set<Municipio> getByUF(String uf);
+
+    Long getIdBy(String nomeCidade);
 }

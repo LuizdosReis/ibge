@@ -38,4 +38,9 @@ public class MunicipioFacadeImpl implements MunicipioFacade {
         Set<MunicipioDTO> municipios = getByUF(uf);
         WriteCsvToResponse.writeMunicipios(response.getWriter(), new ArrayList<>(municipios));
     }
+
+    @Override
+    public Long getIdBy(String nomeCidade) {
+        return municipioService.getIdBy(nomeCidade);
+    }
 }

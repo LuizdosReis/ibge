@@ -10,4 +10,6 @@ public interface MunicipioFacade {
     Set<MunicipioDTO> getByUF(String uf);
 
     void getCSVByUF(String uf, HttpServletResponse response) throws IOException;
+
+    Long getIdBy(String nomeCidade);
 }
